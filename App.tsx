@@ -37,6 +37,7 @@ function FunctionTransitionTab(props) {
         <TabList>
           <Tab>Title 1</Tab>
           <Tab>Title 2</Tab>
+          <Tab>Title 3</Tab>
         </TabList>
 
         <TabPanel>
@@ -45,7 +46,17 @@ function FunctionTransitionTab(props) {
         <TabPanel>
           <h2>Any content 2</h2>
         </TabPanel>
+        <FunctionTabPanel text="s" />
       </Tabs>
     </div>
+  );
+}
+
+function FunctionTabPanel(props) {
+  const msg = props.text;
+  return (
+    <TabPanel>
+      <h2>{msg}</h2>
+    </TabPanel>
   );
 }

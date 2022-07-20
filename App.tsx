@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './style.css';
-
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 export default function App() {
   return (
     <div className="App">
       <header className="App-header">
         <LikeButton value="5" />
+        <FunctionTransitionTab value="1" />
       </header>
     </div>
   );
@@ -24,6 +26,26 @@ function LikeButton(props) {
       </span>
       <p>a</p>
       <p>c</p>
+    </div>
+  );
+}
+
+function FunctionTransitionTab(props) {
+  return (
+    <div>
+      <Tabs>
+        <TabList>
+          <Tab>Title 1</Tab>
+          <Tab>Title 2</Tab>
+        </TabList>
+
+        <TabPanel>
+          <h2>Any content 1</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+      </Tabs>
     </div>
   );
 }

@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LikeButton value = '1'/>
+        <LikeButton value="5" />
       </header>
     </div>
   );
@@ -15,11 +15,15 @@ export default function App() {
 function LikeButton(props) {
   const [count, setCount] = useState(props.value); // count=999
   const handleClick = () => {
-    setCount(parseInt(count) + 1);
+    if (count > 0) setCount(parseInt(count) - 1);
   };
   return (
-    <span className="likeButton" onClick={handleClick}>
-      いいぞ{count}
-    </span>
+    <div>
+      <span className="likeButton" onClick={handleClick}>
+        いいぞ{count}
+      </span>
+      <p>a</p>
+      <p>c</p>
+    </div>
   );
 }

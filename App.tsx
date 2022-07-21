@@ -5,6 +5,7 @@ import 'react-tabs/style/react-tabs.css';
 export default function App() {
   return (
     <div className="App">
+      <TabActive />
       <header className="App-header">
         <LikeButton value="5" />
         <FunctionTransitionTab value="1" />
@@ -12,12 +13,31 @@ export default function App() {
     </div>
   );
 }
+function TabActive()
+{
+    /* state変数を定義する↓ */
+    const [active, setActive] = useState(false); // デフォルト値＝false
+    const classToggle = () => {
+      setActive(!active)
+    }
+    return (
+      <div>
 
+      {/* classNameを追加↓ */}
+      // 三項演算子という書き方で、条件分岐
+      <h1 className={active ? "red" : ""}>Hello, world!</h1>
+
+      {/* ↓クリックで「classToggle」が発動するように設定 */}
+      <button onClick={classToggle}>classNameをつけたり外したりする</button>
+
+    </div>
+    );
+}
 // 関数コンポーネント
 function LikeButton(props) {
   const [count, setCount] = useState(props.value); // count=999
   const handleClick = () => {
-    if (count > 0) setCount(parseInt(count) - 1);
+    if (count > 0) setCount(parseInt(count) - 1); // setCountを変更する
   };
   return (
     <div>
@@ -35,9 +55,9 @@ function FunctionTransitionTab(props) {
     <div>
       <Tabs>
         <TabList>
-          <Tab>Title 1</Tab>
-          <Tab>Title 2</Tab>
-          <Tab>Title 3</Tab>
+          <Tab className="negativeTab">Title 1</Tab>
+          <Tab className="negativeTab">Title 2</Tab>
+          <Tab className="negativeTab">Title 3</Tab>
         </TabList>
 
         <TabPanel>
@@ -46,7 +66,10 @@ function FunctionTransitionTab(props) {
         <TabPanel>
           <h2>Any content 2</h2>
         </TabPanel>
-        <FunctionTabPanel text="s" />
+        <FunctionTabPanel text="test" />
+        <TabPanel>
+          <h2>Any content 3</h2>
+        </TabPanel>
       </Tabs>
     </div>
   );
@@ -55,8 +78,12 @@ function FunctionTransitionTab(props) {
 function FunctionTabPanel(props) {
   const msg = props.text;
   return (
-    <TabPanel>
-      <h2>{msg}</h2>
-    </TabPanel>
+    <div>
+      <p>共通コメント</p>
+      <TabPanel>
+        <h2>{props.text}</h2>
+        <h2>tab3</h2>
+      </TabPanel>
+    </div>
   );
 }

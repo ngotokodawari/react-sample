@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-export default function App() {
+export default function App(props) {
   return (
     <div className="App">
       <header className="App-header">
@@ -11,7 +11,7 @@ export default function App() {
           <TabList>
             <TabActive text="abc" />
             <TabActive text="def" />
-            <TabActive text="efg" />
+            {props.isVisible === 'true' && <TabActive text="efg" />}
           </TabList>
 
           <TabPanel>

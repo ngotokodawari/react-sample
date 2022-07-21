@@ -9,10 +9,9 @@ export default function App() {
         <LikeButton value="5" />
         <Tabs>
           <TabList>
-            <TabActive />
-            <Tab className="negativeTab">Title 1</Tab>
-            <Tab className="negativeTab">Title 2</Tab>
-            <Tab className="negativeTab">Title 3</Tab>
+            <TabActive text="abc" />
+            <TabActive text="def" />
+            <TabActive text="efg" />
           </TabList>
 
           <TabPanel>
@@ -30,7 +29,7 @@ export default function App() {
     </div>
   );
 }
-function TabActive() {
+function TabActive(props) {
   /* state変数を定義する↓ */
   const [active, setActive] = useState(false); // デフォルト値＝false
   const classToggle = () => {
@@ -38,12 +37,13 @@ function TabActive() {
   };
   return (
     <div>
-      {/* classNameを追加↓ */}
-      {/* 三項演算子という書き方で、条件分岐 */}
-      <Tab className={active ? 'negativeTab' : ''}>Title X</Tab>
-      <h1 className={active ? 'red' : ''}>Hello, world!</h1>
-      {/* ↓クリックで「classToggle」が発動するように設定 */}
-      <button onClick={classToggle}>classNameをつけたり外したりする</button>
+      {/* 三項演算子で、条件分岐 */}
+      <Tab
+        className={active ? 'negativeTab' : 'positiveTab'}
+        onClick={classToggle}
+      >
+        {props.text}
+      </Tab>
     </div>
   );
 }
